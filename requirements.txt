@@ -1,7 +1,6 @@
 discord
 datetime
 aiohttp
-re
 giphy_client
 pprint
 dotenv

@@ -2,6 +2,3 @@ discord
 datetime
 aiohttp
 giphy_client
-dotenv
-discord.ext
-discord.utils

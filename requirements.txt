@@ -1,7 +1,6 @@
 discord
 datetime
 aiohttp
-urllib
 re
 giphy_client
 pprint

@@ -1,5 +1,5 @@
 # xerubot
-
+<!-- TODO rewrite this awful readme -->
 ## Commands
 
 

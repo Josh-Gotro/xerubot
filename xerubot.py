@@ -17,21 +17,19 @@ load_dotenv()
 token = os.getenv('TOKEN')
 apiKey = os.getenv("API_KEY")
 myID = os.getenv("MY_DISCORD_ID")
-
 bot = commands.Bot(command_prefix='>', description="This is a Helper Bot")
 
 # -------> Events
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Streaming(name="Tutorials", url="http://www.twitch.tv/accountname"))
-    print('My Ready is Body')
+  print(f'{bot.user.name} connected\n')
 
+
+# -------> Commands
 #  >ping
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
-
-# -------> Commands
 
 #  >sum 1 2
 @bot.command()

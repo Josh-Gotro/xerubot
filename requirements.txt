@@ -1,11 +1,9 @@
 discord
 datetime
 aiohttp
-urllib.parse
-urllib.request
+urllib
 re
 giphy_client
-giphy_client.rest
 pprint
 dotenv
 discord.ext

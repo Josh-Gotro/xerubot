@@ -1,1 +1,1 @@
-worker: python xerubot-balanced-diet.py
+worker: python xerubot.py

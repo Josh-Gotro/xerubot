@@ -2,4 +2,4 @@ discord
 datetime
 aiohttp
 giphy_client
-dot_env
+dot_env=0.19.2

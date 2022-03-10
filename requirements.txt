@@ -1,7 +1,6 @@
 discord
 datetime
 aiohttp
-random
 urllib.parse
 urllib.request
 re

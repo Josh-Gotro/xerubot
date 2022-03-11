@@ -54,10 +54,9 @@ async def sum(ctx, numOne: int, numTwo: int):
 @bot.command()
 async def inflation(ctx):
     api_instance = giphy_client.DefaultApi()
-    random_offset_number = random.randint(1, 99)
     try:
         response = api_instance.gifs_search_get(apiKey,
-                                                'thanksobama', limit=25, offset={random_offset_number})
+                                                'thanksobama', limit=25, offset=(random.randint(1, 80)))
         lst = list(response.data)
         gif = random.choices(lst)
         await ctx.send(gif[0].url)

@@ -1,5 +1,5 @@
 general = ["kittens", "UwU", "puppies", "silly",
-           "teatime", "baby+giggle", "sparkle+pony"]
+           "teatime", "baby+giggle", "sparkle+pony", "cute"]
 youtube = ["tinycakes", "my little pony",
            "kid sister and me", "24 hours of laugter"]
 inspiration = ["silly", "island+life",

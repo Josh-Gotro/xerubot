@@ -13,6 +13,7 @@ from giphy_client.rest import ApiException
 from pprint import pprint
 from discord.ext import commands
 from discord.utils import get
+from data import inspiration
 
 if not os.environ.get('TOKEN'):
     from dotenv import load_dotenv
@@ -112,6 +113,21 @@ async def gif(ctx, query):
     except ApiException as e:
         return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e
 
+
+@bot.command()
+async def okxeru(ctx):
+    api_instance = giphy_client.DefaultApi()
+    query = random.choices(inspiration)
+    print(query)
+    try:
+        response = api_instance.gifs_search_get(apiKey,
+                                                query, limit=25)
+        lst = list(response.data)
+        gif = random.choices(lst)
+        await ctx.send(gif[0].url)
+        return gif[0].url
+    except ApiException as e:
+        return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e
 
 # -------> Listen
 

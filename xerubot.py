@@ -1,7 +1,5 @@
 import discord
 import datetime
-import aiohttp
-import json
 import random
 import os
 import urllib.parse
@@ -10,7 +8,6 @@ import re
 import giphy_client
 
 from giphy_client.rest import ApiException
-from pprint import pprint
 from discord.ext import commands
 from discord.utils import get
 from data import general

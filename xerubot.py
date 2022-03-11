@@ -57,7 +57,7 @@ async def inflation(ctx):
     randOffset = random.randint(1, 80)
     try:
         response = api_instance.gifs_search_get(apiKey,
-                                                'thanksobama', offset=(randOffset))
+                                                'thanksobama', limit=20, offset=(randOffset))
         lst = list(response.data)
         gif = random.choices(lst)
         await ctx.send(gif[0].url)

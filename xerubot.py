@@ -1,4 +1,5 @@
 import os
+import random
 
 from helper_functions import youtube, giphy, thanks_obama, xeru_responder
 from discord.ext import commands
@@ -16,9 +17,9 @@ else:
     # myID = os.environ.get("MY_DISCORD_ID")
 
 bot = commands.Bot(command_prefix='>', description="This is a Helper Bot")
+
+
 #  -------> Events
-
-
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} connected\n')
@@ -64,6 +65,15 @@ async def on_message(message):
     if "gatorade me" in message.content.lower():
         ctx = await bot.get_context(message)
         await giphy(ctx, "gatorade+me")
-
+    if "i love" in message.content.lower():
+        ctx = await bot.get_context(message)
+        roulette = random.randint(1, 10)
+        if roulette == 5:
+            await giphy(ctx, "wedding")
+    if "i like" in message.content.lower():
+        ctx = await bot.get_context(message)
+        roulette = random.randint(1, 10)
+        if roulette == 5:
+            await giphy(ctx, "wedding")
 
 bot.run(token)

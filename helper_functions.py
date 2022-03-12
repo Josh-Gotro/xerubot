@@ -1,6 +1,9 @@
 import urllib.parse
 import urllib.request
 import re
+import random
+import giphy_client
+
 
 from giphy_client.rest import ApiException
 

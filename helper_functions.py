@@ -40,3 +40,17 @@ async def giphy(ctx, query):
 
     except ApiException as e:
         return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e
+
+
+async def thanks_obama(ctx):
+    api_instance = giphy_client.DefaultApi()
+    try:
+        response = api_instance.gifs_search_get(apiKey,
+                                                'thanksobama', limit=25)
+        lst = list(response.data)
+        gif = random.choices(lst)
+        await ctx.send(gif[0].url)
+        return gif[0].url
+
+    except ApiException as e:
+        return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e

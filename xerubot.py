@@ -2,15 +2,14 @@ import discord
 import datetime
 import random
 import os
-import urllib.request
-import re
 import giphy_client
 
-from helper_functions import youtube, giphy
+from helper_functions import youtube, giphy, thanks_obama
 from giphy_client.rest import ApiException
 from discord.ext import commands
 from discord.utils import get
 from data import general
+from xerubot.helper_functions import thanks_obama
 
 if not os.environ.get('TOKEN'):
     from dotenv import load_dotenv
@@ -49,18 +48,7 @@ async def sum(ctx, numOne: int, numTwo: int):
 @bot.command()
 #  >inflation
 async def inflation(ctx):
-    api_instance = giphy_client.DefaultApi()
-    randOffset = random.randint(1, 80)
-    try:
-        response = api_instance.gifs_search_get(apiKey,
-                                                'thanksobama', limit=25)
-        lst = list(response.data)
-        gif = random.choices(lst)
-        await ctx.send(gif[0].url)
-        return gif[0].url
-
-    except ApiException as e:
-        return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e
+    await thanks_obama(ctx)
 
 
 @bot.command()

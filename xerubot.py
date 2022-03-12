@@ -57,7 +57,7 @@ async def info(ctx):
                           timestamp=datetime.datetime.utcnow(), color=discord.Color.blue())
     embed.add_field(name="Server created at", value=f"{ctx.guild.created_at}")
     embed.add_field(name="Server Owner", value=f"{ctx.guild.owner}")
-    embed.add_field(name="Server Region", value=f"{ctx.guild.region}")
+    embed.add_field(name="Server emojis", value=f"{ctx.guild.emojis}")
     embed.add_field(name="Server ID", value=f"{ctx.guild.id}")
     # embed.set_thumbnail(url=f"{ctx.guild.icon}")
     embed.set_thumbnail(

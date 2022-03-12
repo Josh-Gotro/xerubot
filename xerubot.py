@@ -12,8 +12,12 @@ if not os.environ.get('TOKEN'):
     from dotenv import load_dotenv
     load_dotenv()
     token = os.getenv('TOKEN')
+    apiKey = os.getenv("API_KEY")
+    # myID = os.getenv("MY_DISCORD_ID")
 else:
     token = os.environ.get('TOKEN')
+    apiKey = os.environ.get("API_KEY")
+    # myID = os.environ.get("MY_DISCORD_ID")
 
 bot = commands.Bot(command_prefix='>', description="This is a Helper Bot")
 

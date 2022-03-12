@@ -55,5 +55,5 @@ async def gif(ctx, query):
 @bot.listen()
 async def on_message(message):
     if "okxeru" in message.content.lower():
-        generic_responder(message)
+        await generic_responder(message)
 bot.run(token)

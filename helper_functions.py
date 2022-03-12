@@ -5,6 +5,7 @@ import random
 import giphy_client
 import os
 
+from discord.utils import get
 from giphy_client.rest import ApiException
 
 if not os.environ.get('TOKEN'):

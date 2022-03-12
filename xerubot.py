@@ -9,7 +9,6 @@ from giphy_client.rest import ApiException
 from discord.ext import commands
 from discord.utils import get
 from data import general
-from xerubot.helper_functions import thanks_obama
 
 if not os.environ.get('TOKEN'):
     from dotenv import load_dotenv

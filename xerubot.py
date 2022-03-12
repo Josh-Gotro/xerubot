@@ -50,20 +50,20 @@ async def inflation(ctx):
     await thanks_obama(ctx)
 
 
-@bot.command()
-#  >info
-async def info(ctx):
-    embed = discord.Embed(title=f"{ctx.guild.name}", description="Lorem Ipsum asdasd",
-                          timestamp=datetime.datetime.utcnow(), color=discord.Color.blue())
-    embed.add_field(name="Server created at", value=f"{ctx.guild.created_at}")
-    embed.add_field(name="Server Owner", value=f"{ctx.guild.owner}")
-    embed.add_field(name="Server Members", value=f"{ctx.guild.members}")
-    embed.add_field(name="Server ID", value=f"{ctx.guild.id}")
-    # embed.set_thumbnail(url=f"{ctx.guild.icon}")
-    embed.set_thumbnail(
-        url="https://pluralsight.imgix.net/paths/python-7be70baaac.png")
+# @bot.command()
+# #  >info
+# async def info(ctx):
+#     embed = discord.Embed(title=f"{ctx.guild.name}", description="Lorem Ipsum asdasd",
+#                           timestamp=datetime.datetime.utcnow(), color=discord.Color.blue())
+#     embed.add_field(name="Server created at", value=f"{ctx.guild.created_at}")
+#     embed.add_field(name="Server Owner", value=f"{ctx.guild.owner}")
+#     embed.add_field(name="Server Members", value=f"{ctx.guild.members}")
+#     embed.add_field(name="Server ID", value=f"{ctx.guild.id}")
+#     embed.set_thumbnail(url=f"{ctx.guild.icon}")
+#     embed.set_thumbnail(
+#         url="https://pluralsight.imgix.net/paths/python-7be70baaac.png")
 
-    await ctx.send(embed=embed)
+#     await ctx.send(embed=embed)
 
 
 @bot.command()

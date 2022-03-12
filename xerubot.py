@@ -16,7 +16,6 @@ else:
     # myID = os.environ.get("MY_DISCORD_ID")
 
 bot = commands.Bot(command_prefix='>', description="This is a Helper Bot")
-
 #  -------> Events
 
 
@@ -60,7 +59,8 @@ async def gif(ctx, query):
 @bot.listen()
 async def on_message(message):
     if "okxeru" in message.content.lower():
-        await xeru_responder(message)
+        await bot.wait_until_ready()
+        await xeru_responder(message, bot)
 
 
 bot.run(token)

@@ -74,7 +74,9 @@ async def on_message(message):
         ctx = await bot.get_context(message)
         roulette = random.randint(1, 10)
         if roulette == 5:
+            await message.channel.send("if you like it so much then...")
             await giphy(ctx, "wedding")
+        return gif[0].url
     if "badxeru" in message.content.lower():
         # await bot.wait_until_ready()
         await xeru_responder_bad(message, bot)

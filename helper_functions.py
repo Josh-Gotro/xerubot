@@ -6,6 +6,8 @@ import giphy_client
 import os
 
 from giphy_client.rest import ApiException
+from data import general
+from discord.ext import commands
 
 if not os.environ.get('TOKEN'):
     from dotenv import load_dotenv
@@ -48,5 +50,23 @@ async def thanks_obama(ctx):
         await ctx.send(gif[0].url)
         return gif[0].url
 
+    except ApiException as e:
+        return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e
+
+bot = commands.Bot(command_prefix='>', description="This is a Helper Bot")
+
+
+async def xeru_responder(message):
+    api_instance = giphy_client.DefaultApi()
+    query = random.choices(general)
+    print(query)
+    try:
+        response = api_instance.gifs_search_get(apiKey,
+                                                query, limit=25)
+        lst = list(response.data)
+        gif = random.choices(lst)
+        await message.channel.send(gif[0].url)
+        await bot.process_commands(message)
+        return gif[0].url
     except ApiException as e:
         return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e

@@ -66,6 +66,7 @@ async def on_message(message):
         ctx = await bot.get_context(message)
         await giphy(ctx, "gatorade+me")
     if "i love" in message.content.lower():
+        await message.channel.send("if you love it so much then...")
         ctx = await bot.get_context(message)
         roulette = random.randint(1, 10)
         if roulette == 5:

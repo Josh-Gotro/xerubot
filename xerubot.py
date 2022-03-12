@@ -59,8 +59,11 @@ async def gif(ctx, query):
 @bot.listen()
 async def on_message(message):
     if "okxeru" in message.content.lower():
-        await bot.wait_until_ready()
+        # await bot.wait_until_ready()
         await xeru_responder(message, bot)
+    if "gatorade me" in message.content.lower():
+        ctx = await bot.get_context(message)
+        await giphy(ctx, "gatorade+me")
 
 
 bot.run(token)

@@ -78,7 +78,7 @@ async def on_message(message):
             await message.channel.send("if you like it so much then...")
             await giphy(ctx, "wedding")
         return gif[0].url
-    if "badxeru" in message.content.lower():
+    if "noxeru" in message.content.lower():
         # await bot.wait_until_ready()
         await xeru_responder_bad(message, bot)
 

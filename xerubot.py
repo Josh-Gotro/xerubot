@@ -1,7 +1,12 @@
+import random
 import os
+import giphy_client
 
-from helper_functions import youtube, giphy, thanks_obama, generic_responder
+from helper_functions import youtube, giphy, thanks_obama
+from giphy_client.rest import ApiException
 from discord.ext import commands
+from data import general
+# from discord.utils import get
 
 if not os.environ.get('TOKEN'):
     from dotenv import load_dotenv
@@ -54,6 +59,19 @@ async def gif(ctx, query):
 #  -------> Listen
 @bot.listen()
 async def on_message(message):
-    if "okxeru" in message.content.lower():
-        await generic_responder(message)
+    api_instance = giphy_client.DefaultApi()
+    query = random.choices(general)
+    print(query)
+    try:
+        response = api_instance.gifs_search_get(apiKey,
+                                                query, limit=25)
+        lst = list(response.data)
+        gif = random.choices(lst)
+        await message.channel.send(gif[0].url)
+        await bot.process_commands(message)
+        return gif[0].url
+    except ApiException as e:
+        return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e
+
+
 bot.run(token)

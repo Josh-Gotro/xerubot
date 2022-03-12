@@ -42,6 +42,7 @@ __pypackages__/
 
 # Environments
 .env
+pristine-nomad-286918-b9aedfb1b226.json
 .venv
 env/
 venv/

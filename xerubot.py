@@ -1,7 +1,7 @@
 import os
 import random
 
-from helper_functions import youtube, giphy, thanks_obama, xeru_responder
+from helper_functions import youtube, giphy, thanks_obama, xeru_responder, list_languages
 from discord.ext import commands
 # from discord.utils import get
 
@@ -54,6 +54,11 @@ async def yt(ctx, *, search):
 # >gif UwU
 async def gif(ctx, query):
     await giphy(ctx, query)
+
+
+@bot.command()
+async def languages(ctx):
+    await list_languages()
 
 
 #  -------> Listen

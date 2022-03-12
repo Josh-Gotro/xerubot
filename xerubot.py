@@ -1,7 +1,7 @@
 import os
 import random
 
-from helper_functions import youtube, giphy, thanks_obama, xeru_responder
+from helper_functions import youtube, giphy, thanks_obama, xeru_responder, xeru_responder_bad
 from discord.ext import commands
 # from discord.utils import get
 
@@ -75,5 +75,8 @@ async def on_message(message):
         roulette = random.randint(1, 10)
         if roulette == 5:
             await giphy(ctx, "wedding")
+    if "badxeru" in message.content.lower():
+        # await bot.wait_until_ready()
+        await xeru_responder_bad(message, bot)
 
 bot.run(token)

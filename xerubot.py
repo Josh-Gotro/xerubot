@@ -6,7 +6,7 @@ import urllib.request
 import re
 import giphy_client
 
-from helper_functions import youtube
+from helper_functions import youtube, giphy
 from giphy_client.rest import ApiException
 from discord.ext import commands
 from discord.utils import get
@@ -82,49 +82,19 @@ async def info(ctx):
 @bot.command()
 #  >yt tinycakes
 async def yt(ctx, *, search):
-    youtube(ctx, search)
+    await youtube(ctx, search)
 
 
 @bot.command()
 # >gif UwU
 async def gif(ctx, query):
-    api_instance = giphy_client.DefaultApi()
-    try:
-        response = api_instance.gifs_search_get(apiKey,
-                                                query, limit=25)
-        lst = list(response.data)
-        gif = random.choices(lst)
-        await ctx.send(gif[0].url)
-        return gif[0].url
-
-    except ApiException as e:
-        return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e
+    await giphy(ctx, query)
 
 
-@bot.command()
-async def okxeru(ctx):
-    api_instance = giphy_client.DefaultApi()
-    query = random.choices(general)
-    print(query)
-    try:
-        response = api_instance.gifs_search_get(apiKey,
-                                                query, limit=25)
-        lst = list(response.data)
-        gif = random.choices(lst)
-        await ctx.send(gif[0].url)
-        return gif[0].url
-    except ApiException as e:
-        return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e
-
-# -------> Listen
-
-
+#  -------> Listen
 @bot.listen()
 async def on_message(message):
     if "okxeru" in message.content.lower():
-        #         # in this case don't respond with the word "Tutorial" or you will call the on_message event recursively
-        #         await message.channel.send('This is that you want http://youtube.com/fazttech')
-        #         await bot.process_commands(message)
         api_instance = giphy_client.DefaultApi()
         query = random.choices(general)
         print(query)

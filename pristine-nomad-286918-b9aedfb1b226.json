@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pristine-nomad-286918",
+  "private_key_id": "b9aedfb1b2267c519f988d29279928440dc10941",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC8WVkuxrK72b6f\nXe+1Fxb1DXooxN0X/zZKdS5jXxl2tTwRJkdvx+lL93nlR7mGzE/oyaCQmekuYrJ9\nLoLheo2ggO+qzUikbdfvPz5hdWiEMn/jZlF0Mzju47w5GXhzmQwQ8IiGc4ZvsAU8\nztsNKkDxzszLEHNrTJW0G4TTk26/WLlfzPeGx6j20r6M76bd0xCl7WMFFuYqfsjS\nF7D/825OHvUp4KarkNN1uxBZAKSXndQlJIlItOpGvIvmteNLQ0ZUpXQ7LC5jV+sK\nLe4xnlsCSh18aswiLXK+Ay0xEt3B0KB6QjV5Cw2K/2qYt+Ecq7iTLwqVNZ+cwBq4\n1aTc5zIxAgMBAAECggEAC/4BXmfS1gCXcUS1IDnb4Zbt1f4w2JgMkCGVZkjWEXeZ\nHztpdX3MRiS362gNcT59gQQjd8mA7g3lMPC+7xXTQiqrd9vRufxvcQF9Go3z7WTc\nvTEU0xn20EkKQTV0tKGEQejavHrLDr3tm3FNQ7GSyIKjCfPecXDDIGBXLPR4avDi\nh+hjFqORl9kcIB/LFOsydhOt86ADhPzocZMzVn6b2iFF9I2kDjtrMKdlSDw73oLU\n+CsJ3HJJeLuvWKWeyBHFdF3yQm3SkGf7JpSnUg36UferRNJFhzG3fmOvp5oVn01P\n75qnkyM8KYUYIHSTOvLW5sFXCSxo84TD4Xz6Pkew9QKBgQDd7M0aLzlrk9ZFBU4N\n+DgBX1cda8+QPUKylQFQZK7sjMthwTJTgJP0h/lY2OwFHzC68ehPiTjdKMH2hoOR\nrwQdoyRjf9F5bQKstl8jH13cSF5NSxoZ0r1NxzClVNy+SZUCtCAtfTVlKsEfobwm\nupXXnoZas42m4ZLtchDsdiKkPQKBgQDZRMbmpn0X7AfXbXhjR2lvPd3ZyZBFvtPb\nUAVAJ88y66p5NSQE3KUVR+AO+l3G42yfyaKl+Je9mxARDZ71nnuWcNjN1jxyOsgu\nFMBltSZSR/563sAaURRaRWqleYuV7dCjIcUDUYmYcJuwmqN2zd+3K5Vb8BuEefp2\nKRlO8IjBBQKBgFY3qlMy55bwv3zfG7z3oyJ9XMXUXbZG5oOkufb2trK13EnlGd0x\nBcopjWjEFaXDwVXPp5ZG1G2vaPOSvMi7etjcycVSIhqPjEt3KqzlgbyT7PcQZ1qC\n8gKmkTKaLoxK3/ZF7n5dt4HPQ2o7lnJhaNd1AfN48F5WIpPXDdYf60NtAoGAKU62\nMiv9JIsvgnnBpb5yAUBV6Y406824Ib45AVWQQzIjGyBLVNFOYZlks/RN1/5tLIP9\ndGirENVmXJemXTRgct3JmnjczSr33Cr92VhzjLk7XMj05Qv9PpxsBkHxk/O+8wT8\nnADolB70usLryS6jFgQnRW+FC87VG5n8wdFhbrECgYEA0zKobfQI62Gq3rEoJLGS\nHBmMm9L5zcCiKQeWQDPwAxh+1f+dYai0WGOgVIbPdU+bgvG/uTLRkHgqcY4SxmnB\nnuMsQIzk62X4063BrRDUMaqYPYJ/0bcJ2I8AP668iDCxWnRmUDanPH98Is5YEx7O\nqHmc9Nk2WKWHA00k9nprVRE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "xerubot@pristine-nomad-286918.iam.gserviceaccount.com",
+  "client_id": "106610792119294657510",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/xerubot%40pristine-nomad-286918.iam.gserviceaccount.com"
+}

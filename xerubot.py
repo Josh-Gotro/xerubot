@@ -119,7 +119,7 @@ async def okxeru(ctx):
 # -------> Listen
 
 
-@bot.listen(ctx)
+@bot.listen()
 async def on_message(message):
     if "okxeru" in message.content.lower():
         #         # in this case don't respond with the word "Tutorial" or you will call the on_message event recursively
@@ -134,6 +134,7 @@ async def on_message(message):
             lst = list(response.data)
             gif = random.choices(lst)
             await message.channel.send(gif[0].url)
+            await bot.process_commands(message)
             return gif[0].url
         except ApiException as e:
             return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e

@@ -6,7 +6,7 @@ import giphy_client
 import os
 
 from giphy_client.rest import ApiException
-from data import general, bad
+from data import general, bad, youtube_list, inspiration
 from discord.ext import commands
 
 if not os.environ.get('TOKEN'):

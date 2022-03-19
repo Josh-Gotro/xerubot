@@ -1,9 +1,11 @@
 import os
 import random
+from discord_slash import SlashCommand
+
 
 from helper_functions import youtube, giphy, thanks_obama, xeru_responder, xeru_responder_bad
 from discord.ext import commands
-# from discord.utils import get
+# import interactions
 
 if not os.environ.get('TOKEN'):
     from dotenv import load_dotenv
@@ -55,9 +57,17 @@ async def yt(ctx, *, search):
 async def gif(ctx, query):
     await giphy(ctx, query)
 
+butt = SlashCommand(bot, sync_commands=True)
+guild_ids = [952019437568016415]  # Put your server IDs in this array.
+
+
+@ butt.slash(name="ping", guild_ids=guild_ids)
+async def _ping(ctx):
+    await ctx.send("Pong!")
+
 
 #  -------> Listen
-@bot.listen()
+@ bot.listen()
 async def on_message(message):
     if "okxeru" in message.content.lower():
         # await bot.wait_until_ready()
@@ -81,5 +91,6 @@ async def on_message(message):
     if "noxeru" in message.content.lower():
         # await bot.wait_until_ready()
         await xeru_responder_bad(message, bot)
+
 
 bot.run(token)

@@ -1,7 +1,7 @@
 import os
 import random
-import pyowm
-import spacy
+# import pyowm
+# import spacy
 
 
 from helper_functions import youtube, giphy, thanks_obama, xeru_responder, xeru_responder_bad
@@ -24,9 +24,9 @@ else:
 intents = Intents.default()
 bot = commands.Bot(command_prefix='>', description="This is a Helper Bot", intents=intents)
 
-nlp = spacy.load("en_core_web_sm")
-api_key = os.environ.get('OWM_API_KEY')
-owm = pyowm.OWM(api_key)
+# nlp = spacy.load("en_core_web_sm")
+# api_key = os.environ.get('OWM_API_KEY')
+# owm = pyowm.OWM(api_key)
 
 #  -------> Events
 @bot.event
@@ -95,16 +95,16 @@ async def on_message(message):
         await giphy(ctx, "calculator")
         return gif[0].url
 
-    if "weather" in message.content.lower():
-        doc = nlp(message.content)
-        for ent in doc.ents:
-            if ent.label_ == "GPE":
-                location = ent.text
-                observation = owm.weather_at_place(location)
-                w = observation.get_weather()
-                temperature = w.get_temperature('fahrenheit')["temp"]
-                await message.channel.send(f"The current temperature in {location} is {temperature}°F.")
-                return
+    # if "weather" in message.content.lower():
+    #     doc = nlp(message.content)
+    #     for ent in doc.ents:
+    #         if ent.label_ == "GPE":
+    #             location = ent.text
+    #             observation = owm.weather_at_place(location)
+    #             w = observation.get_weather()
+    #             temperature = w.get_temperature('fahrenheit')["temp"]
+    #             await message.channel.send(f"The current temperature in {location} is {temperature}°F.")
+    #             return
 
     if message.author == bot.user:
         return

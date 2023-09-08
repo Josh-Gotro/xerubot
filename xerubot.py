@@ -101,7 +101,7 @@ async def on_message(message):
         doc = nlp(message.content)
         location = None
         print(f"doc.ents: {doc.ents}")
-        await message.channel.send(f"doc.ent {doc.ent}.")
+        await message.channel.send(f"doc.ent {doc.ents}.")
 
         for ent in doc.ents:
             if ent.label_ == "GPE":

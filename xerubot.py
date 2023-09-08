@@ -7,6 +7,8 @@ import logging
 
 from helper_functions import youtube, giphy, thanks_obama, xeru_responder, xeru_responder_bad
 from discord.ext import commands
+from discord import Intents
+
 # from discord.utils import get
 
 if not os.environ.get('TOKEN'):
@@ -20,7 +22,8 @@ else:
     apiKey = os.environ.get("API_KEY")
     # myID = os.environ.get("MY_DISCORD_ID")
 
-bot = commands.Bot(command_prefix='>', description="This is a Helper Bot")
+intents = Intents.default()
+bot = commands.Bot(command_prefix='>', description="This is a Helper Bot", intents=intents)
 
 
 #  -------> Events

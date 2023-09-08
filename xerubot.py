@@ -1,5 +1,8 @@
 import os
 import random
+import pyowm
+import spacy
+import requests
 
 from helper_functions import youtube, giphy, thanks_obama, xeru_responder, xeru_responder_bad
 from discord.ext import commands
@@ -56,6 +59,10 @@ async def gif(ctx, query):
     await giphy(ctx, query)
 
 
+nlp = spacy.load("en_core_web_sm")
+owm = pyowm.OWM('9438766a1b821728ce81901ffdb743bf')
+
+
 #  -------> Listen
 @bot.listen()
 async def on_message(message):
@@ -97,5 +104,17 @@ async def on_message(message):
         if roulette <= 5:  # 5% chance
             ctx = await bot.get_context(message)
             await giphy(ctx, "calculator")
+
+
+    if "weather" in message.content.lower():
+        doc = nlp(message.content)
+        for ent in doc.ents:
+            if ent.label_ == "GPE":  # Geo-Political Entity
+                location = ent.text
+                observation = owm.weather_at_place(location)
+                w = observation.get_weather()
+                temperature = w.get_temperature('fahrenheit')["temp"]
+                await message.channel.send(f"The current temperature in {location} is {temperature}°F.")
+                return  # exit after sending the first location found
 
 bot.run(token)

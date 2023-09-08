@@ -99,9 +99,6 @@ async def on_message(message):
 
     if "weather" in message.content.lower():
         doc = nlp(message.content)
-        location = None
-
-        # Try to find the location in the message content
         for ent in doc.ents:
             if ent.label_ == "GPE":
                 location = ent.text
@@ -114,15 +111,13 @@ async def on_message(message):
             elif "austin" in message.content.lower():
                 location = "Austin, US"
 
-        if location:
-            observation = owm.weather_at_place(location)
+            observation = mgr.weather_at_place(location)
             w = observation.weather
             temperature = w.temperature('fahrenheit')['temp']
             maxtemp = w.temperature('fahrenheit')['temp_max']
             mintemp = w.temperature('fahrenheit')['temp_min']
-            await message.channel.send(f"The current temperature in {location} is {temperature}°F. \n The max temp today is {maxtemp}°F, and the min temp is {mintemp}°F.")
-
-        return
+            await message.channel.send(f"The current temperature in {location} is {temperature}°F. \n the max temp today is {maxtemp}°F and the min temp is {mintemp}°F")
+            return
 
     if message.author == bot.user:
         return

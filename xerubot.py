@@ -112,14 +112,9 @@ async def on_message(message):
             temperature = w.temperature('fahrenheit')['temp']
             maxtemp = w.temperature('fahrenheit')['temp_max']
             mintemp = w.temperature('fahrenheit')['temp_min']
-            rain = w.rain
             await message.channel.send(f"The current temp in {location} is {temperature}°F.")
             await message.channel.send(f"High forecast today: {maxtemp}°F")
             await message.channel.send(f"Low forecast today:  {mintemp}°F")
-            await message.channel.send(f"Rain?:  {rain}°F")
-
-
-
             return
         return
 

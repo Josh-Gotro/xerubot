@@ -82,4 +82,14 @@ async def on_message(message):
         # await bot.wait_until_ready()
         await xeru_responder_bad(message, bot)
 
+    if message.author == bot.user:
+        return
+
+    specific_user_id = 176061042101583872
+    if message.author.id == specific_user_id:
+        roulette = random.randint(1, 100)
+        if roulette <= 5:  # 5% chance
+            ctx = await bot.get_context(message)
+            await giphy(ctx, "calculator")
+
 bot.run(token)

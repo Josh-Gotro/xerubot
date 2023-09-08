@@ -102,14 +102,10 @@ async def on_message(message):
         location = None
 
         for ent in doc.ents:
-            print(f"{ent.text}: {ent.label_}")
-            await message.channel.send(f"{ent.text}: {ent.label_}")
             if ent.label_ == "GPE":
-                if ent.text.lower() == "juneau":
-                    location = "Juneau, US"
-                elif ent.text.lower() == "austin":
-                    location = "Austin, US"
-                else: location = ent.text
+                location = ent.text
+            elif ent.text == "juneau":
+                location = "Juneau, US"
 
         if location:
             observation = mgr.weather_at_place(str(location))

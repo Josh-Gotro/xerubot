@@ -100,10 +100,9 @@ async def on_message(message):
     if "weather" in message.content.lower():
         doc = nlp(message.content)
         location = None
-        print(f"doc.ents: {doc.ents}, doc.label: {doc.label_}")
-        await message.channel.send(f"doc.ent {doc.ents}, doc.label: {doc.label_}.")
 
         for ent in doc.ents:
+            print(f"{ent.text}: {ent.label_}")
             if ent.label_ == "GPE":
                 if ent.text.lower() == "juneau":
                     location = "Juneau, US"

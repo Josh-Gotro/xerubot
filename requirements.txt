@@ -4,4 +4,3 @@ aiohttp
 giphy_client
 pyowm
 spacy
-logging

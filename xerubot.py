@@ -21,7 +21,7 @@ else:
     apiKey = os.environ.get("API_KEY")
     # myID = os.environ.get("MY_DISCORD_ID")
 
-intents = Intents.default()
+intents = Intents.all()
 bot = commands.Bot(command_prefix='>', description="This is a Helper Bot", intents=intents)
 
 # nlp = spacy.load("en_core_web_sm")

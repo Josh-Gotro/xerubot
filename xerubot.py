@@ -25,6 +25,9 @@ else:
 intents = Intents.default()
 bot = commands.Bot(command_prefix='>', description="This is a Helper Bot", intents=intents)
 
+nlp = spacy.load("en_core_web_sm")
+api_key = os.environ.get('OWM_API_KEY')
+owm = pyowm.OWM(api_key)
 
 #  -------> Events
 @bot.event
@@ -61,13 +64,6 @@ async def yt(ctx, *, search):
 # >gif UwU
 async def gif(ctx, query):
     await giphy(ctx, query)
-
-
-nlp = spacy.load("en_core_web_sm")
-api_key = os.environ.get('OWM_API_KEY')
-owm = pyowm.OWM(api_key)
-
-
 
 #  -------> Listen
 @bot.listen()

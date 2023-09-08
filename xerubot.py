@@ -102,14 +102,10 @@ async def on_message(message):
         for ent in doc.ents:
             if ent.label_ == "GPE":
                 location = ent.text
-                break
-
-        # Handle specific locations
-        if location:
-            if "juneau" in message.content.lower():
-                location = "Juneau, US"  # Use "Juneau, US" instead of "Juneau, AK"
-            elif "austin" in message.content.lower():
-                location = "Austin, US"
+                if location.content.lower() == "juneau":
+                    location = "Juneau, US"
+                if location.content.lower() == "austin":
+                    location = "Austin, US"
 
             observation = mgr.weather_at_place(location)
             w = observation.weather

@@ -102,6 +102,7 @@ async def on_message(message):
         location = None
 
         for ent in doc.ents:
+            print(f"ent.text: {ent.text}, type: {type(ent.text)}")
             if ent.label_ == "GPE":
                 if ent.text.lower() == "juneau":
                     location = "Juneau, US"
@@ -118,6 +119,7 @@ async def on_message(message):
             await message.channel.send(f"The current temp in {location} is {temperature}°F.")
             await message.channel.send(f"High forecast today: {maxtemp}°F")
             await message.channel.send(f"Low forecast today:  {mintemp}°F")
+            await message.channel.send(f"ent.text: {ent.text}, type: {type(ent.text)}")
             return
         return
 

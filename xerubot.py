@@ -60,7 +60,9 @@ async def gif(ctx, query):
 
 
 nlp = spacy.load("en_core_web_sm")
-owm = pyowm.OWM('9438766a1b821728ce81901ffdb743bf')
+api_key = os.environ.get('OWM_API_KEY')
+owm = pyowm.OWM(api_key)
+
 
 
 #  -------> Listen

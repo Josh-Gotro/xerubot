@@ -105,7 +105,9 @@ async def on_message(message):
                 observation = mgr.weather_at_place(location)
                 w = observation.weather
                 temperature = w.temperature('fahrenheit')['temp']
-                await message.channel.send(f"The current temperature in {location} is {temperature}°F. \n the max temp is {w.temperature('fahrenheit')['temp_max']}°F and the min temp is {w.temperature('fahrenheit')['temp_min']}°F")
+                maxtemp = w.temperature('fahrenheit')['temp_max']
+                mintemp = w.temperature('fahrenheit')['temp_min']
+                await message.channel.send(f"The current temperature in {location} is {temperature}°F. \n the max temp today is {maxtemp}°F and the min temp is {mintemp}°F")
                 return
 
     if message.author == bot.user:

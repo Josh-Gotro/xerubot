@@ -122,7 +122,7 @@ async def on_message(message):
             mintemp = w.temperature('fahrenheit')['temp_min']
             await message.channel.send(f"The current temperature in {location} is {temperature}°F. \n The max temp today is {maxtemp}°F, and the min temp is {mintemp}°F.")
 
-                return
+            return
 
     if message.author == bot.user:
         return

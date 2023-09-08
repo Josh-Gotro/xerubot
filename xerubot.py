@@ -99,18 +99,14 @@ async def on_message(message):
 
     if "weather" in message.content.lower():
         doc = nlp(message.content)
-        location - None
-
+        location = None
         for ent in doc.ents:
             if ent.label_ == "GPE":
-                location = ent.text.lower()
-
-        if location:
-            if location == "juneau":
-                location = "Juneau, US"
-            elif location == "austin":
-                location = "Austin, US"
-
+                if ent.text == "juneau":
+                    location = "Juneau, US"
+                elif ent.text == "austin":
+                    location = "Austin, US"
+                else: location = ent.text
             observation = mgr.weather_at_place(location)
             w = observation.weather
             temperature = w.temperature('fahrenheit')['temp']

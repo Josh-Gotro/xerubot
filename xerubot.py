@@ -101,9 +101,9 @@ async def on_message(message):
         doc = nlp(message.content)
         for ent in doc.ents:
             if ent.label_ == "GPE":
-                if ent.text.lower() == "juneau":
+                if ent.text == "juneau":
                     location = "Juneau, US"
-                elif ent.text.lower() == "austin":
+                elif ent.text == "austin":
                     location = "Austin, US"
                 else: location = ent.text
 
@@ -112,9 +112,12 @@ async def on_message(message):
             temperature = w.temperature('fahrenheit')['temp']
             maxtemp = w.temperature('fahrenheit')['temp_max']
             mintemp = w.temperature('fahrenheit')['temp_min']
-            await message.channel.send(f"The current temperature in {location} is {temperature}°F. \n the max temp today is {maxtemp}°F and the min temp is {mintemp}°F")
-            await message.channel.send(f"The high temp today is forecasted to be {maxtemp}°F")
-            await message.channel.send(f"The low temp is forecasted to be {mintemp}°F")
+            rain = w.rain
+            await message.channel.send(f"The current temp in {location} is {temperature}°F.")
+            await message.channel.send(f"High forecast today: {maxtemp}°F")
+            await message.channel.send(f"Low forecast today:  {mintemp}°F")
+            await message.channel.send(f"Rain?:  {rain}°F")
+
 
 
             return

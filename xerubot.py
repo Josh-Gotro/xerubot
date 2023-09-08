@@ -94,6 +94,17 @@ async def on_message(message):
         await giphy(ctx, "calculator")
         return gif[0].url
 
+    if "weather" in message.content.lower():
+        doc = nlp(message.content)
+    for ent in doc.ents:
+        if ent.label_ == "GPE":  # Geo-Political Entity
+            location = ent.text
+            observation = owm.weather_at_place(location)
+            w = observation.get_weather()
+            temperature = w.get_temperature('fahrenheit')["temp"]
+            await message.channel.send(f"The current temperature in {location} is {temperature}°F.")
+            return  # exit after sending the first location found
+
     if message.author == bot.user:
         return
 
@@ -104,17 +115,5 @@ async def on_message(message):
         if roulette <= 5:  # 5% chance
             ctx = await bot.get_context(message)
             await giphy(ctx, "calculator")
-
-
-    if "weather" in message.content.lower():
-        doc = nlp(message.content)
-        for ent in doc.ents:
-            if ent.label_ == "GPE":  # Geo-Political Entity
-                location = ent.text
-                observation = owm.weather_at_place(location)
-                w = observation.get_weather()
-                temperature = w.get_temperature('fahrenheit')["temp"]
-                await message.channel.send(f"The current temperature in {location} is {temperature}°F.")
-                return  # exit after sending the first location found
 
 bot.run(token)

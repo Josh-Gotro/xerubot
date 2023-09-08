@@ -2,7 +2,8 @@ import os
 import random
 import pyowm
 import spacy
-import requests
+import logging
+
 
 from helper_functions import youtube, giphy, thanks_obama, xeru_responder, xeru_responder_bad
 from discord.ext import commands
@@ -96,16 +97,22 @@ async def on_message(message):
         await giphy(ctx, "calculator")
         return gif[0].url
 
+    logging.info(f"Message received: {message.content}")  # Debug line
+
     if "weather" in message.content.lower():
+        logging.info("Found 'weather' in the message.")  # Debug line
         doc = nlp(message.content)
-    for ent in doc.ents:
-        if ent.label_ == "GPE":  # Geo-Political Entity
-            location = ent.text
-            observation = owm.weather_at_place(location)
-            w = observation.get_weather()
-            temperature = w.get_temperature('fahrenheit')["temp"]
-            await message.channel.send(f"The current temperature in {location} is {temperature}°F.")
-            return  # exit after sending the first location found
+        for ent in doc.ents:
+            logging.info(f"Entity found: {ent.text}, Label: {ent.label_}")  # Debug line
+            if ent.label_ == "GPE":
+                location = ent.text
+                logging.info(f"Fetching weather for {location}.")  # Debug line
+                observation = owm.weather_at_place(location)
+                w = observation.get_weather()
+                temperature = w.get_temperature('fahrenheit')["temp"]
+                await message.channel.send(f"The current temperature in {location} is {temperature}°F.")
+                return
+        logging.info("No location found in message.")  # Debug line
 
     if message.author == bot.user:
         return

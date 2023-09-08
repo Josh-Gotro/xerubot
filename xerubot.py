@@ -100,8 +100,8 @@ async def on_message(message):
     if "weather" in message.content.lower():
         doc = nlp(message.content)
         location = None
-        print(f"doc.ents: {doc.ents}")
-        await message.channel.send(f"doc.ent {doc.ents}.")
+        print(f"doc.ents: {doc.ents}, doc.label: {doc.label_}")
+        await message.channel.send(f"doc.ent {doc.ents}, doc.label: {doc.label_}.")
 
         for ent in doc.ents:
             if ent.label_ == "GPE":

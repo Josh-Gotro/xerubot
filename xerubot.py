@@ -110,7 +110,7 @@ async def on_message(message):
                 else: location = ent.text
 
         if location:
-            observation = mgr.weather_at_place(location)
+            observation = mgr.weather_at_place(str(location))
             w = observation.weather
             temperature = w.temperature('fahrenheit')['temp']
             maxtemp = w.temperature('fahrenheit')['temp_max']

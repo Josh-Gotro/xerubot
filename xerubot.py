@@ -100,7 +100,7 @@ async def on_message(message):
         for ent in doc.ents:
             if ent.label_ == "GPE":
                 location = ent.text
-                observation = owm.weather_at_place(location)
+                observation = owm.weather_manager().weather_at_place(location)
                 w = observation.get_weather()
                 temperature = w.get_temperature('fahrenheit')["temp"]
                 await message.channel.send(f"The current temperature in {location} is {temperature}°F.")

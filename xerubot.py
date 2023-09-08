@@ -100,6 +100,8 @@ async def on_message(message):
     if "weather" in message.content.lower():
         doc = nlp(message.content)
         location = None
+        print(f"doc.ents: {doc.ents}")
+        await message.channel.send(f"doc.ent {doc.ent}.")
 
         for ent in doc.ents:
             if ent.label_ == "GPE":
@@ -111,9 +113,7 @@ async def on_message(message):
 
         if location:
             observation = mgr.weather_at_place(str(location))
-            await message.channel.send(f"observation {observation}.")
             w = observation.weather
-            await message.channel.send(f"w {w}.")
             temperature = w.temperature('fahrenheit')['temp']
             maxtemp = w.temperature('fahrenheit')['temp_max']
             mintemp = w.temperature('fahrenheit')['temp_min']

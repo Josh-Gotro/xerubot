@@ -82,9 +82,15 @@ async def on_message(message):
         # await bot.wait_until_ready()
         await xeru_responder_bad(message, bot)
 
+    if "okcourser" in message.content.lower():
+        ctx = await bot.get_context(message)
+        await giphy(ctx, "calculator")
+        return gif[0].url
+
     if message.author == bot.user:
         return
 
+#  5% chance to respond when courser talks with a calulator gif
     specific_user_id = 176061042101583872
     if message.author.id == specific_user_id:
         roulette = random.randint(1, 100)

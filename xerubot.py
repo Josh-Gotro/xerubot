@@ -98,7 +98,7 @@ async def on_message(message):
         return gif[0].url
 
     if "weather" in message.content.lower():
-        if 'juneau' in message_content:
+        if "juneau" in message.content.lower():
             message_content = message_content.replace('juneau', 'Juneau, AK')
 
         doc = nlp(message.content)

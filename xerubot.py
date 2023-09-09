@@ -99,7 +99,7 @@ async def on_message(message):
 
     if "weather" in message.content.lower():
         if "juneau" in message.content.lower():
-            message_content = message_content.replace('juneau', 'Juneau, AK')
+            message.content = message.content.replace('juneau', 'Juneau, AK')
 
         doc = nlp(message.content)
         location = None

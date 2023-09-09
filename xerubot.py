@@ -97,33 +97,10 @@ async def on_message(message):
         await giphy(ctx, "calculator")
         return gif[0].url
 
-    # if "weather" in message.content.lower():
-    #     if "juneau" in message.content.lower():
-    #         message.content = message.content.replace('juneau', 'Juneau, AK')
-
-    #     doc = nlp(message.content)
-    #     location = None
-
-    #     for ent in doc.ents:
-    #         if ent.label_ == "GPE":
-    #             location = ent.text
-
-    #     if location:
-    #         observation = mgr.weather_at_place(str(location))
-    #         w = observation.weather
-    #         temperature = w.temperature('fahrenheit')['temp']
-    #         maxtemp = w.temperature('fahrenheit')['temp_max']
-    #         mintemp = w.temperature('fahrenheit')['temp_min']
-    #         await message.channel.send(f"The current temp in {location} is {temperature}°F.")
-    #         await message.channel.send(f"High forecast today: {maxtemp}°F")
-    #         await message.channel.send(f"Low forecast today:  {mintemp}°F")
-    #         return
-    #     return
-
     if "weather" in message.content.lower():
         if "juneau" in message.content.lower():
             message.content = message.content.replace('juneau', 'Juneau, AK')
-
+# nlp is a natural language processor from spacy that i uncluded to prevent some common errors, for instance Austin being used as a name vs a location. it isnt perfect but it helps.
         doc = nlp(message.content)
         locations = []
 
@@ -131,7 +108,8 @@ async def on_message(message):
             if ent.label_ == "GPE":
                 locations.append(ent.text)
 
-        for location in locations:
+# including multiple locations so people can ask about the weather in multiple places at once. limiting to  3 locations to prevent spam.
+        for location in locations[:3]:
             observation = mgr.weather_at_place(str(location))
             w = observation.weather
             temperature = w.temperature('fahrenheit')['temp']

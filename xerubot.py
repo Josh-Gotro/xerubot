@@ -101,7 +101,8 @@ async def on_message(message):
         doc = nlp(message.content)
         if "juneau" in doc:
             location = "Juneau, US"
-        else: location = None
+        else:
+            location = None
 
         for ent in doc.ents:
             if ent.label_ == "GPE":

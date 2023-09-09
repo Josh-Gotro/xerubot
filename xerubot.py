@@ -104,8 +104,8 @@ async def on_message(message):
         for ent in doc.ents:
             if ent.label_ == "GPE":
                 location = ent.text
-            elif ent.text == "juneau":
-                location = "Juneau, US"
+            if ent.txt == "juneau":
+                location = "Juneau, AK"
 
         if location:
             observation = mgr.weather_at_place(str(location))

@@ -98,14 +98,15 @@ async def on_message(message):
         return gif[0].url
 
     if "weather" in message.content.lower():
+        if 'juneau' in message_content:
+            message_content = message_content.replace('juneau', 'Juneau, AK')
+
         doc = nlp(message.content)
         location = None
 
         for ent in doc.ents:
             if ent.label_ == "GPE":
                 location = ent.text
-            if ent.txt == "juneau":
-                location = "Juneau, AK"
 
         if location:
             observation = mgr.weather_at_place(str(location))

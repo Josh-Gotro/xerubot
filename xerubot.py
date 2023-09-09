@@ -97,18 +97,41 @@ async def on_message(message):
         await giphy(ctx, "calculator")
         return gif[0].url
 
+    # if "weather" in message.content.lower():
+    #     if "juneau" in message.content.lower():
+    #         message.content = message.content.replace('juneau', 'Juneau, AK')
+
+    #     doc = nlp(message.content)
+    #     location = None
+
+    #     for ent in doc.ents:
+    #         if ent.label_ == "GPE":
+    #             location = ent.text
+
+    #     if location:
+    #         observation = mgr.weather_at_place(str(location))
+    #         w = observation.weather
+    #         temperature = w.temperature('fahrenheit')['temp']
+    #         maxtemp = w.temperature('fahrenheit')['temp_max']
+    #         mintemp = w.temperature('fahrenheit')['temp_min']
+    #         await message.channel.send(f"The current temp in {location} is {temperature}°F.")
+    #         await message.channel.send(f"High forecast today: {maxtemp}°F")
+    #         await message.channel.send(f"Low forecast today:  {mintemp}°F")
+    #         return
+    #     return
+
     if "weather" in message.content.lower():
         if "juneau" in message.content.lower():
             message.content = message.content.replace('juneau', 'Juneau, AK')
 
         doc = nlp(message.content)
-        location = None
+        locations = []
 
         for ent in doc.ents:
             if ent.label_ == "GPE":
-                location = ent.text
+                locations.append(ent.text)
 
-        if location:
+        for location in locations:
             observation = mgr.weather_at_place(str(location))
             w = observation.weather
             temperature = w.temperature('fahrenheit')['temp']
@@ -117,8 +140,6 @@ async def on_message(message):
             await message.channel.send(f"The current temp in {location} is {temperature}°F.")
             await message.channel.send(f"High forecast today: {maxtemp}°F")
             await message.channel.send(f"Low forecast today:  {mintemp}°F")
-            return
-        return
 
     if message.author == bot.user:
         return

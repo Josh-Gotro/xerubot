@@ -4,7 +4,7 @@ import pyowm
 import spacy
 
 
-from helper_functions import youtube, giphy, thanks_obama, xeru_responder, xeru_responder_bad
+from helper_functions import youtube, giphy, thanks_obama, xeru_responder, xeru_responder_bad, courser_responder
 from discord.ext import commands
 from discord import Intents
 
@@ -94,7 +94,7 @@ async def on_message(message):
 
     if "okcourser" in message.content.lower():
         ctx = await bot.get_context(message)
-        await giphy(ctx, "calculator")
+        await courser_responder(message, bot)
         return gif[0].url
 
     if "weather" in message.content.lower():
@@ -122,12 +122,12 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-#  5% chance to respond when courser talks with a calulator gif
+#  1% chance to respond when courser talks with a calulator gif
     specific_user_id = 176061042101583872
     if message.author.id == specific_user_id:
         roulette = random.randint(1, 100)
-        if roulette <= 5:  # 5% chance
+        if roulette <= 1:  # 1% chance
             ctx = await bot.get_context(message)
-            await giphy(ctx, "calculator")
+            await courser_responder(message, bot)
 
 bot.run(token)

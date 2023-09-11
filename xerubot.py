@@ -100,6 +100,12 @@ async def on_message(message):
     if "weather" in message.content.lower():
         if "juneau" in message.content.lower():
             message.content = message.content.replace('juneau', 'Juneau, AK')
+        if "hazard" in message.content.lower():
+            message.content = message.content.replace('hazard', 'Hazard, US')
+        if "modesto" in message.content.lower():
+            message.content = message.content.replace('modesto', 'Modesto, US')
+        if "methdesto" in message.content.lower():
+            message.content = message.content.replace('methdesto', 'Modesto, US')
 # nlp is a natural language processor from spacy that i uncluded to prevent some common errors, for instance Austin being used as a name vs a location. it isnt perfect but it helps.
         doc = nlp(message.content)
         locations = []
